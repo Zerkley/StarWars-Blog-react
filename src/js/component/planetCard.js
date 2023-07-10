@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 
-export const PlanetCard = () => {
+export const PlanetCard = (props) => {
+  const { store, actions } = useContext(Context);
+
   return (
-    <div className="card my-5 mx-2" style={{ width: "22rem", height: "28rem" }}>
+    <div className="card mb-4 mx-2" style={{ width: "22rem", height: "28rem" }}>
       <img
         src="https://cdn.iconscout.com/icon/free/png-256/free-star-341-225972.png"
-        className="img-thumbnail"
+        className="img-thumbnail mt-2"
         alt="..."
       ></img>
       <div className="card-body">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">
-          Gender: <br />
-          Hair Color: <br />
-          Eye Color: <br />
-        </p>
+        <h5 className="card-title">{props.plaName}</h5>
+
         <div className="d-flex justify-content-between">
           <a href="#" className="btn btn-outline-primary">
             Learn More!
@@ -27,3 +28,9 @@ export const PlanetCard = () => {
     </div>
   );
 };
+
+PlanetCard.propTypes = {
+  plaName: PropTypes.string,
+};
+
+PlanetCard.defaultProps = {};

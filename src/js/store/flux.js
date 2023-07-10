@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       peopleGeneral: [],
       people: [],
       planets: [],
+      planetsGeneral: [],
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -25,12 +26,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((err) => console.error(err));
       },
-      getPlanets: () => {
-        fetch("https://www.swapi.tech/api/planets/1")
+      getAllPlanets: () => {
+        fetch("https://www.swapi.tech/api/planets")
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            setStore({ planets: data.results });
+            setStore({ planetsGeneral: data.results });
           })
           .catch((err) => console.error(err));
       },

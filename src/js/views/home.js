@@ -8,41 +8,30 @@ import { Context } from "../store/appContext";
 export const Home = () => {
   const { store, actions } = useContext(Context);
   const people = store.people;
+  const peopleGeneral = store.peopleGeneral;
+  const planets = store.planets;
+  const planetsGeneral = store.planetsGeneral;
   useEffect(() => {
     actions.getAllPeople();
+    actions.getAllPlanets();
   }, []);
   return (
     <div>
+      <h1 className="ms-3">Characters</h1>
       <div className="container-fluid">
         <div className="row flex-row flex-nowrap overflow-auto">
-          <CharacterCard
-            id={peopleGeneral?.uid}
-            characterName={people.properties?.name}
-            gender={people.properties?.gender}
-            hairColor={people.properties?.hair_color}
-            eyeColor={people.properties?.eye_color}
-          />
-
-          <CharacterCard />
-          <CharacterCard />
-          <CharacterCard />
-          <CharacterCard />
-          <CharacterCard />
-          <CharacterCard />
-          <CharacterCard />
+          {peopleGeneral.map((charName) => (
+            <CharacterCard characterName={charName.name} key={charName.uid} />
+          ))}
         </div>
       </div>
+      <hr />
+      <h1 className="ms-3">Planets</h1>
       <div className="container-fluid">
         <div className="row flex-row flex-nowrap overflow-auto">
-          <PlanetCard />
-          <PlanetCard />
-          <PlanetCard />
-          <PlanetCard />
-          <PlanetCard />
-          <PlanetCard />
-          <PlanetCard />
-          <PlanetCard />
-          <PlanetCard />
+          {planetsGeneral.map((planetName) => (
+            <PlanetCard plaName={planetName.name} key={planetName.uid} />
+          ))}
         </div>
       </div>
     </div>

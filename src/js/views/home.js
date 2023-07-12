@@ -20,8 +20,12 @@ export const Home = () => {
       <h1 className="ms-3">Characters</h1>
       <div className="container-fluid">
         <div className="row flex-row flex-nowrap overflow-auto">
-          {peopleGeneral.map((charName) => (
-            <CharacterCard characterName={charName.name} key={charName.uid} />
+          {peopleGeneral.map((charName, index) => (
+            <CharacterCard
+              characterName={charName.name}
+              key={index}
+              uid={charName.uid}
+            />
           ))}
         </div>
       </div>
@@ -29,8 +33,12 @@ export const Home = () => {
       <h1 className="ms-3">Planets</h1>
       <div className="container-fluid">
         <div className="row flex-row flex-nowrap overflow-auto">
-          {planetsGeneral.map((planetName) => (
-            <PlanetCard plaName={planetName.name} key={planetName.uid} />
+          {planetsGeneral.map((planetName, index) => (
+            <PlanetCard
+              plaName={planetName.name}
+              key={index}
+              uid={planetName.uid}
+            />
           ))}
         </div>
       </div>

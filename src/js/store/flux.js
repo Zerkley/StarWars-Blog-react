@@ -35,6 +35,15 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((err) => console.error(err));
       },
+      getPlanets: (id) => {
+        fetch("https://www.swapi.tech/api/planets/" + id)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setStore({ planets: data.result });
+          })
+          .catch((err) => console.error(err));
+      },
     },
   };
 };

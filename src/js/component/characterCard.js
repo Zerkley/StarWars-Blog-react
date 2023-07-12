@@ -1,24 +1,27 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export const CharacterCard = (props) => {
   const { store, actions } = useContext(Context);
-  const [people, setPeople] = useState([]);
 
   return (
     <div className="card mb-4 mx-2" style={{ width: "22rem", height: "28rem" }}>
       <img
-        src="https://cdn.iconscout.com/icon/free/png-256/free-star-341-225972.png"
+        src="https://hotpotmedia.s3.us-east-2.amazonaws.com/8-Q9qPdugAkWukOu8.png"
         className="img-thumbnail mt-2"
         alt="..."
       ></img>
       <div className="card-body">
         <h5 className="card-title">{props.characterName}</h5>
         <div className="d-flex justify-content-between">
-          <a href="#" className="btn btn-outline-primary">
+          <Link
+            to={`/characterInfo/${props.uid}`}
+            className="btn btn-outline-primary"
+          >
             Learn More!
-          </a>
+          </Link>
           <a href="#" className="btn btn-outline-primary">
             <i className="fa-regular fa-heart"></i>
           </a>

@@ -9,7 +9,7 @@ export const PlanetCard = (props) => {
   return (
     <div className="card mb-4 mx-2" style={{ width: "22rem", height: "28rem" }}>
       <img
-        src="https://cdn.iconscout.com/icon/free/png-256/free-star-341-225972.png"
+        src="https://is5-ssl.mzstatic.com/image/thumb/Purple112/v4/1f/c2/cb/1fc2cb7c-497a-8e65-c5fa-e6822ee75abf/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/256x256bb.jpg"
         className="img-thumbnail mt-2"
         alt="..."
       ></img>
@@ -17,9 +17,12 @@ export const PlanetCard = (props) => {
         <h5 className="card-title">{props.plaName}</h5>
 
         <div className="d-flex justify-content-between">
-          <a href="#" className="btn btn-outline-primary">
+          <Link
+            to={`/planetInfo/${props.uid}`}
+            className="btn btn-outline-primary"
+          >
             Learn More!
-          </a>
+          </Link>
           <a href="#" className="btn btn-outline-primary">
             <i className="fa-regular fa-heart"></i>
           </a>

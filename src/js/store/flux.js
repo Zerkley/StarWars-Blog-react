@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       people: [],
       planets: [],
       planetsGeneral: [],
+      favorites: [],
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -43,6 +44,21 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ planets: data.result });
           })
           .catch((err) => console.error(err));
+      },
+      favoriteCheck: (name) => {
+        const favorites = getStore().favorites;
+        if (favorites.indexOf(name) !== -1) {
+          getActions().removeFavorite(name);
+        }
+        getActions().addFavorite(name);
+      },
+      addFavorite: (name) => {
+        setStore({ favorites: getStore().favorites.concat(name) });
+      },
+      removeFavorite: (name) => {
+        setStore({
+          favorites: getStore().favorites.filter((element) => element !== name),
+        });
       },
     },
   };

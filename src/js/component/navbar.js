@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store, actions } = useContext(Context);
+
+  const names = store.favorites;
   return (
     <nav className="navbar navbar-light bg-light mb-3">
       <Link to="/">
@@ -17,24 +21,19 @@ export const Navbar = () => {
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Favourites
+          Favourites {store.favorites.length}
         </button>
         <ul className="dropdown-menu">
-          <li>
-            <a className="dropdown-item" href="#">
-              Action
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Another action
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Something else here
-            </a>
-          </li>
+          {names
+            ? names.map((name) => (
+                <li key={name} className="dropdown-item">
+                  {name}
+                  <a id="remove" onClick={() => actions.removeFavorite(name)}>
+                    <i className="fa-solid fa-trash"></i>
+                  </a>
+                </li>
+              ))
+            : null}
         </ul>
       </div>
     </nav>

@@ -23,7 +23,11 @@ export const PlanetCard = (props) => {
           >
             Learn More!
           </Link>
-          <a href="#" className="btn btn-outline-primary">
+          <a
+            href="#"
+            className="btn btn-outline-primary"
+            onClick={() => actions.favoriteCheck(props.plaName)}
+          >
             <i className="fa-regular fa-heart"></i>
           </a>
         </div>

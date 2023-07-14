@@ -23,7 +23,10 @@ export const CharacterCard = (props) => {
             Learn More!
           </Link>
           <a href="#" className="btn btn-outline-primary">
-            <i className="fa-regular fa-heart"></i>
+            <i
+              className="fa-regular fa-heart"
+              onClick={() => actions.favoriteCheck(props.characterName)}
+            ></i>
           </a>
         </div>
       </div>
